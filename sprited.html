@@ -278,6 +278,15 @@ Auto crop image
 </div>
 </div>
 <script>
+// STATS-FETCHER-START
+fetch('https://www.chromebooker.com/stats/visitors.php', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({ page: window.location.href })
+});
+// STATS-FETCHER-END
 (() => {
 const backgroundCanvas = document.getElementById('backgroundCanvas'),
 spriteCanvas = document.getElementById('spriteCanvas'),
