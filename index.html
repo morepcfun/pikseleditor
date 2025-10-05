@@ -2,10 +2,14 @@
 <html lang="no">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Pikselkunst-redigerer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e1e1e">
+<title>Piksel-Editor for sprites med mer</title>
+<meta name="description" content="Verktøy som lar deg tegne eller importere sprites for å redigere dem. Lag grafikk til spill eller kul webgrafikk.">
+<meta name="author" content="Johnny Heggelund">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://morepcfun.github.io/pikseleditor/">
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEiUlEQVR4AcxVTWxUVRQ+971psTEG0DSu3Jmw0IgLE41iXLnBGIVKS7GJpfRPF6TFstQZN266qSYuSmI0SEuxEw3UH+qmgGGBC6IbFxoTE8VgbCQIjLT3nnM93525w+u09LVJDUze98693/n77rkzmYTu8CdXwMyhb7efrmGuOHfPWvTOjvxwb8w5OXLusdVycgUkqbkoqfkeWLhW2LZasehjc+MJxANNxlyI/Eo2V8BKSRvJrUuAkCRFKgZ48iYrBPvoE5Y1180NfGF0R7pzdIcBKEmOPXn4eQa+Gjn/Y1bA1yPnfwIPJCm9i/gqnm3JxjWucwU0Jmz0/s4LGO8fb/q46/O2U4fOBXx2cPbR7Cm/ePPs7uhT/j5F9fF+a+RhvfGbq47wrvtmhs/sCkzt9ekb3zx+YvB024dd5bYjneW2xF3Z+sCmlubyzUql7BYXy17S9lpsMCZJpwtpUgbImIcCqS+TmAfBRRgyrUrHZ1vk00I6GUlYQ9RF3pebm5vKaYHK4QpERDlPsESCuP8N6BHgPXnxFASwF2LhqgBZ2htBwFJ2bTvkAUuivVdKSH+qJNq3KoCrzVmt02lkE6DWq9pgyb9IZB4OYN5LmY8It1HNp+Gvej0d6UdqVpfhcXpQ9GG1IOoCnDYHKeLA11FvroU057edo8/8Algxv8MXIeTrPsNySfQggCdfr4WFWPbMQvBhHwRgw44JjkWnXnhqEBUWm9Sougm8CoOtk7rAEcChrl9ajjABx4jQQH2Szc2LFR3ZmGNW2DFD/v7jvV8WpwdnA7SIYRUR4NzgyYNzxZmhs0Ui6REtrv5wn3qdfeDhF+HuwOsUWKQQa6FuYkyLiB9DTyDpmuj6Z+B4xzBw4JM9w/ojaNIhlSzbkn5JSiJiFFQ9EQ+Cc+xKXqQHHBD8LH3g4Rfm7iBYhTvnCuD0eks6+JJJE4deEeEKdBL1h3U8ThNVuV4Jk9M9614LhT2aRYAH4j5rwQPgYK3Wcbhme2v8aLpMgGW+7pybt1bBbt6huSajCOCcC0JgAXBAXMMCeuIQpz5vtQ5bnrfOzuvBrqNxxDIB/ZMdh3uP7WntObq79bWPXm611gpEaHKYhlMxca3FCc2A+lr9aA5OG5PGLqBO99FdrajbO7HnrdgcdpkAkFmgsIrQ04g20yvRMTpMRSehxclpQ9gAXTv16fTIaRzynHLZeo3rXAH6BQq/2dDAWZyIUNiqgGoTV20W9i740BTxuH+gsWl2nyuAyA8rhgARf1lEgiCdzJ+O7VCE7v9S1HzyK+IBY8xItmHjOlfAwGTn+/2Te98DyNDftwr4K+AilL+qCI8xdDnyfRMdHwTyNq9cAbfJ2zD67hcwvm+Kj+w74QEhs//SH5UWYItNtmfHsMWaR8ADxpu3EV/F1L/ZuMb1uiZgWBbeObP/JtA+3b6YLYY9eED//5b4snGN63UJaEzeiH2+APFPe0mfAkzl6s9raZre2HQR8QBT8txqObkCBqY6LwxMvVLFzEBltWLRd+DUS9dizuuT7d9FfiWbK2ClpPVwebH/AQAA//8wuR4yAAAABklEQVQDALAP4G5UON16AAAAAElFTkSuQmCC">
-
 <style>
 :root {
 --bg-color: #1e1e1e;
@@ -192,17 +196,17 @@ gap: 4px;
 <div class="control-section">
 <h3>Fil</h3>
 <button id="loadImageButton" class="tool-button" title="Last inn et bilde fra maskinen din">📂 Last inn</button>
-<input type="file" id="imageLoader" accept="image/*" style="display:none" />
+<input type="file" id="imageLoader" accept="image/*" style="display:none">
 </div>
 <div class="control-section">
 <h3>Lerret</h3>
 <div class="input-group">
 <label for="canvasWidth">Bredde:</label>
-<input type="number" id="canvasWidth" value="32" min="1" max="2048" />
+<input type="number" id="canvasWidth" value="32" min="1" max="2048">
 </div>
 <div class="input-group">
 <label for="canvasHeight">Høyde:</label>
-<input type="number" id="canvasHeight" value="32" min="1" max="2048" />
+<input type="number" id="canvasHeight" value="32" min="1" max="2048">
 </div>
 <div class="canvas-grid">
 <button id="resizeButton" class="tool-button" title="Endre størrelse på lerretet">📐 Størrelse</button>
@@ -222,7 +226,7 @@ gap: 4px;
 <div class="control-section">
 <h3>Zoom</h3>
 <div class="input-group">
-<input type="range" id="zoomSlider" min="1" max="40" value="10" />
+<input type="range" id="zoomSlider" min="1" max="40" value="10">
 <span id="zoom-level" style="text-align: center; font-weight: bold;">10x</span>
 </div>
 </div>
@@ -237,13 +241,13 @@ gap: 4px;
 </div>
 <div class="input-group">
 <label class="inline-label">
-<input type="checkbox" id="cropCheckbox" checked />
+<input type="checkbox" id="cropCheckbox" checked="">
 <span>Auto-beskjær bilde</span>
 </label>
 </div>
 <div class="input-group">
 <label for="exportScale">Skaleringsfaktor:</label>
-<input type="number" id="exportScale" value="1" min="1" max="10" />
+<input type="number" id="exportScale" value="1" min="1" max="10">
 </div>
 <button id="exportButton" class="action-button">💾 Eksporter</button>
 </div>
@@ -321,7 +325,6 @@ c.width = pixelWidth;
 c.height = pixelHeight;
 });
 spriteCtx.imageSmoothingEnabled = false;
-// Gjenopprett det gamle bildeinnholdet, eller tegn et nytt bilde
 if (drawImage) {
 spriteCtx.drawImage(drawImage, 0, 0, pixelWidth, pixelHeight);
 } else if (oldImageData) {
@@ -514,14 +517,14 @@ data = ctx.getImageData(0, 0, source.width, source.height).data;
 let minX = source.width, minY = source.height, maxX = -1, maxY = -1;
 for (let y = 0; y < source.height; y++)
 for (let x = 0; x < source.width; x++) {
-if (data[(y * source.width + x) * 4 + 3] > 0) { // Sjekker alpha-kanalen
+if (data[(y * source.width + x) * 4 + 3] > 0) {
 minX = Math.min(x, minX);
 minY = Math.min(y, minY);
 maxX = Math.max(x, maxX);
 maxY = Math.max(y, maxY);
 }
 }
-if (maxX === -1) return null; // Tomt lerret
+if (maxX === -1) return null;
 const width = maxX - minX + 1,
 height = maxY - minY + 1;
 const croppedCanvas = document.createElement('canvas');
@@ -542,7 +545,6 @@ pencilButton.addEventListener('click', () => setActiveTool('pencil'));
 eraserButton.addEventListener('click', () => setActiveTool('eraser'));
 pickerButton.addEventListener('click', () => setActiveTool('picker'));
 clearButton.addEventListener('click', clearCanvas);
-// FIKS: Kaller updateCanvasSize uten drawImage-parameter for å unngå å overskrive brukerens endringer.
 resizeButton.addEventListener('click', () => updateCanvasSize());
 exportButton.addEventListener('click', exportImage);
 zoomSlider.addEventListener('input', () => {
