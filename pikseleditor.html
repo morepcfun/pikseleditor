@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Pikseleditor/title&gt;
-&lt;style&gt;
+<title>Pikselkunst-redigerer</title>
+<meta name="description" content="Ditt gratis, nettbaserte studio for pikselkunst. Design 8-bit sprites og pikselert kunst med intuitive verktøy og eksporter dine kreasjoner umiddelbart.">
+<meta name="author" content="Johnny Heggelund">
+
+<style>
 :root {
 --bg-color: #1e1e1e;
 --primary-color: #2d2d2d;
@@ -172,83 +175,83 @@ align-items: center;
 justify-content: flex-start;
 gap: 4px;
 }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class="main-layout"&gt;
-&lt;div class="workspace"&gt;
-&lt;div id="canvas-container"&gt;
-&lt;canvas id="backgroundCanvas" class="editor-canvas"&gt;&lt;/canvas&gt;
-&lt;canvas id="spriteCanvas" class="editor-canvas"&gt;&lt;/canvas&gt;
-&lt;canvas id="gridCanvas" class="editor-canvas"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-&lt;div id="color-palette-container"&gt;
-&lt;div id="colorPalette"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="right-panel"&gt;
-&lt;div class="control-section"&gt;
-&lt;h3&gt;Fil&lt;/h3&gt;
-&lt;button id="loadImageButton" class="tool-button" title="Last inn et bilde fra maskinen din"&gt;📂 Last inn&lt;/button&gt;
-&lt;input type="file" id="imageLoader" accept="image/*" style="display:none" /&gt;
-&lt;/div&gt;
-&lt;div class="control-section"&gt;
-&lt;h3&gt;Lerret&lt;/h3&gt;
-&lt;div class="input-group"&gt;
-&lt;label for="canvasWidth"&gt;Bredde:&lt;/label&gt;
-&lt;input type="number" id="canvasWidth" value="32" min="1" max="2048" /&gt;
-&lt;/div&gt;
-&lt;div class="input-group"&gt;
-&lt;label for="canvasHeight"&gt;Høyde:&lt;/label&gt;
-&lt;input type="number" id="canvasHeight" value="32" min="1" max="2048" /&gt;
-&lt;/div&gt;
-&lt;div class="canvas-grid"&gt;
-&lt;button id="resizeButton" class="tool-button" title="Endre størrelse på lerretet"&gt;📐 Størrelse&lt;/button&gt;
-&lt;button id="fitImageButton" class="tool-button" title="Skaler bildet til å passe lerretet"&gt;📏 Tilpass&lt;/button&gt;
-&lt;button id="centerImageButton" class="tool-button" title="Sentrer bildet på lerretet uten skalering"&gt;✂️ Sentrer&lt;/button&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="control-section"&gt;
-&lt;h3&gt;Verktøy&lt;/h3&gt;
-&lt;div class="tools-grid"&gt;
-&lt;button id="pencilButton" class="tool-button selected" title="Blyant (P)"&gt;✏️ Blyant&lt;/button&gt;
-&lt;button id="eraserButton" class="tool-button" title="Viskelær (E)"&gt;🧼 Viskelær&lt;/button&gt;
-&lt;button id="pickerButton" class="tool-button" title="Fargevelger (I)"&gt;💧 Velger&lt;/button&gt;
-&lt;/div&gt;
-&lt;button id="clearButton" class="tool-button" style="border-color: var(--danger-color); margin-top: 10px;"&gt;🗑️ Tøm alt&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class="control-section"&gt;
-&lt;h3&gt;Zoom&lt;/h3&gt;
-&lt;div class="input-group"&gt;
-&lt;input type="range" id="zoomSlider" min="1" max="40" value="10" /&gt;
-&lt;span id="zoom-level" style="text-align: center; font-weight: bold;"&gt;10x&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="control-section"&gt;
-&lt;h3&gt;Eksport&lt;/h3&gt;
-&lt;div class="input-group"&gt;
-&lt;label for="exportFormat"&gt;Format:&lt;/label&gt;
-&lt;select id="exportFormat"&gt;
-&lt;option value="png"&gt;PNG&lt;/option&gt;
-&lt;option value="gif"&gt;GIF&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;div class="input-group"&gt;
-&lt;label class="inline-label"&gt;
-&lt;input type="checkbox" id="cropCheckbox" checked /&gt;
-&lt;span&gt;Auto-beskjær bilde&lt;/span&gt;
-&lt;/label&gt;
-&lt;/div&gt;
-&lt;div class="input-group"&gt;
-&lt;label for="exportScale"&gt;Skaleringsfaktor:&lt;/label&gt;
-&lt;input type="number" id="exportScale" value="1" min="1" max="10" /&gt;
-&lt;/div&gt;
-&lt;button id="exportButton" class="action-button"&gt;💾 Eksporter&lt;/button&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-(() =&gt; {
+</style>
+</head>
+<body>
+<div class="main-layout">
+<div class="workspace">
+<div id="canvas-container">
+<canvas id="backgroundCanvas" class="editor-canvas"></canvas>
+<canvas id="spriteCanvas" class="editor-canvas"></canvas>
+<canvas id="gridCanvas" class="editor-canvas"></canvas>
+</div>
+<div id="color-palette-container">
+<div id="colorPalette"></div>
+</div>
+</div>
+<div class="right-panel">
+<div class="control-section">
+<h3>Fil</h3>
+<button id="loadImageButton" class="tool-button" title="Last inn et bilde fra maskinen din">📂 Last inn</button>
+<input type="file" id="imageLoader" accept="image/*" style="display:none" />
+</div>
+<div class="control-section">
+<h3>Lerret</h3>
+<div class="input-group">
+<label for="canvasWidth">Bredde:</label>
+<input type="number" id="canvasWidth" value="32" min="1" max="2048" />
+</div>
+<div class="input-group">
+<label for="canvasHeight">Høyde:</label>
+<input type="number" id="canvasHeight" value="32" min="1" max="2048" />
+</div>
+<div class="canvas-grid">
+<button id="resizeButton" class="tool-button" title="Endre størrelse på lerretet">📐 Størrelse</button>
+<button id="fitImageButton" class="tool-button" title="Skaler bildet til å passe lerretet">📏 Tilpass</button>
+<button id="centerImageButton" class="tool-button" title="Sentrer bildet på lerretet uten skalering">✂️ Sentrer</button>
+</div>
+</div>
+<div class="control-section">
+<h3>Verktøy</h3>
+<div class="tools-grid">
+<button id="pencilButton" class="tool-button selected" title="Blyant (P)">✏️ Blyant</button>
+<button id="eraserButton" class="tool-button" title="Viskelær (E)">🧼 Viskelær</button>
+<button id="pickerButton" class="tool-button" title="Fargevelger (I)">💧 Velger</button>
+</div>
+<button id="clearButton" class="tool-button" style="border-color: var(--danger-color); margin-top: 10px;">🗑️ Tøm alt</button>
+</div>
+<div class="control-section">
+<h3>Zoom</h3>
+<div class="input-group">
+<input type="range" id="zoomSlider" min="1" max="40" value="10" />
+<span id="zoom-level" style="text-align: center; font-weight: bold;">10x</span>
+</div>
+</div>
+<div class="control-section">
+<h3>Eksport</h3>
+<div class="input-group">
+<label for="exportFormat">Format:</label>
+<select id="exportFormat">
+<option value="png">PNG</option>
+<option value="gif">GIF</option>
+</select>
+</div>
+<div class="input-group">
+<label class="inline-label">
+<input type="checkbox" id="cropCheckbox" checked />
+<span>Auto-beskjær bilde</span>
+</label>
+</div>
+<div class="input-group">
+<label for="exportScale">Skaleringsfaktor:</label>
+<input type="number" id="exportScale" value="1" min="1" max="10" />
+</div>
+<button id="exportButton" class="action-button">💾 Eksporter</button>
+</div>
+</div>
+</div>
+<script>
+(() => {
 const backgroundCanvas = document.getElementById('backgroundCanvas'),
 spriteCanvas = document.getElementById('spriteCanvas'),
 gridCanvas = document.getElementById('gridCanvas');
@@ -306,7 +309,7 @@ const oldImageData = !drawImage ? spriteCtx.getImageData(0, 0, pixelWidth, pixel
 const newWidth = Number(widthInput.value), newHeight = Number(heightInput.value);
 const minW = Number(widthInput.min), maxW = Number(widthInput.max);
 const minH = Number(heightInput.min), maxH = Number(heightInput.max);
-if (isNaN(newWidth) || isNaN(newHeight) || newWidth &lt; minW || newWidth &gt; maxW || newHeight &lt; minH || newHeight &gt; maxH) {
+if (isNaN(newWidth) || isNaN(newHeight) || newWidth < minW || newWidth > maxW || newHeight < minH || newHeight > maxH) {
 alert(`Lerret-dimensjoner må være mellom ${minW}x${minH} og ${maxW}x${maxH}.`);
 widthInput.value = pixelWidth;
 heightInput.value = pixelHeight;
@@ -314,7 +317,7 @@ return;
 }
 pixelWidth = newWidth;
 pixelHeight = newHeight;
-[backgroundCanvas, spriteCanvas, gridCanvas].forEach(c =&gt; {
+[backgroundCanvas, spriteCanvas, gridCanvas].forEach(c => {
 c.width = pixelWidth;
 c.height = pixelHeight;
 });
@@ -332,7 +335,7 @@ function applyZoom() {
 zoom = parseInt(zoomSlider.value);
 const scaledWidth = pixelWidth * zoom,
 scaledHeight = pixelHeight * zoom;
-[backgroundCanvas, spriteCanvas, gridCanvas].forEach(c =&gt; {
+[backgroundCanvas, spriteCanvas, gridCanvas].forEach(c => {
 c.style.width = `${scaledWidth}px`;
 c.style.height = `${scaledHeight}px`;
 });
@@ -341,8 +344,8 @@ drawGrid();
 }
 function drawCheckerboard() {
 const color1 = '#333', color2 = '#444';
-for (let y = 0; y &lt; pixelHeight; y++) {
-for (let x = 0; x &lt; pixelWidth; x++) {
+for (let y = 0; y < pixelHeight; y++) {
+for (let x = 0; x < pixelWidth; x++) {
 backgroundCtx.fillStyle = (x + y) % 2 === 0 ? color1 : color2;
 backgroundCtx.fillRect(x, y, 1, 1);
 }
@@ -350,16 +353,16 @@ backgroundCtx.fillRect(x, y, 1, 1);
 }
 function drawGrid() {
 gridCtx.clearRect(0, 0, pixelWidth, pixelHeight);
-if (zoom &lt; 5) return;
+if (zoom < 5) return;
 gridCtx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
 gridCtx.lineWidth = 1 / zoom;
-for (let x = 0; x &lt;= pixelWidth; x++) {
+for (let x = 0; x <= pixelWidth; x++) {
 gridCtx.beginPath();
 gridCtx.moveTo(x, 0);
 gridCtx.lineTo(x, pixelHeight);
 gridCtx.stroke();
 }
-for (let y = 0; y &lt;= pixelHeight; y++) {
+for (let y = 0; y <= pixelHeight; y++) {
 gridCtx.beginPath();
 gridCtx.moveTo(0, y);
 gridCtx.lineTo(pixelWidth, y);
@@ -370,11 +373,11 @@ function handleDraw(event) {
 const rect = gridCanvas.getBoundingClientRect();
 const x = Math.floor((event.clientX - rect.left) / zoom);
 const y = Math.floor((event.clientY - rect.top) / zoom);
-if (x &lt; 0 || x &gt;= pixelWidth || y &lt; 0 || y &gt;= pixelHeight) return;
+if (x < 0 || x >= pixelWidth || y < 0 || y >= pixelHeight) return;
 if (activeTool === 'picker') {
 const p = spriteCtx.getImageData(x, y, 1, 1).data;
-if (p[3] &gt; 0) {
-const hex = "#" + ("000000" + ((p[0] &lt;&lt; 16) | (p[1] &lt;&lt; 8) | p[2]).toString(16)).slice(-6).toUpperCase();
+if (p[3] > 0) {
+const hex = "#" + ("000000" + ((p[0] << 16) | (p[1] << 8) | p[2]).toString(16)).slice(-6).toUpperCase();
 const colorBox = document.querySelector(`.color-box[data-color="${hex}"]`);
 if (colorBox) {
 selectColor(colorBox);
@@ -396,7 +399,7 @@ spriteCtx.clearRect(0, 0, pixelWidth, pixelHeight);
 }
 function setupPalette() {
 colorPaletteContainer.innerHTML = '';
-uniqueVgaColors.forEach(color =&gt; {
+uniqueVgaColors.forEach(color => {
 const colorBox = document.createElement('div');
 colorBox.className = 'color-box';
 colorBox.style.backgroundColor = color;
@@ -425,9 +428,9 @@ gridCanvas.style.cursor = tool === 'picker' ? 'copy' : 'crosshair';
 function handleImageLoad(file) {
 if (!file) return;
 const reader = new FileReader();
-reader.onload = (event) =&gt; {
+reader.onload = (event) => {
 const img = new Image();
-img.onload = () =&gt; {
+img.onload = () => {
 widthInput.value = img.width;
 heightInput.value = img.height;
 updateCanvasSize(img);
@@ -448,7 +451,7 @@ spriteCtx.clearRect(0, 0, pixelWidth, pixelHeight);
 const imgRatio = contentCanvas.width / contentCanvas.height;
 const canvasRatio = targetWidth / targetHeight;
 let drawWidth, drawHeight;
-if (imgRatio &gt; canvasRatio) {
+if (imgRatio > canvasRatio) {
 drawWidth = targetWidth;
 drawHeight = Math.round(targetWidth / imgRatio);
 } else {
@@ -489,7 +492,7 @@ sourceCanvas = cropped;
 const scaleInput = document.getElementById('exportScale');
 const scale = Number(scaleInput.value);
 const minScale = Number(scaleInput.min), maxScale = Number(scaleInput.max);
-if (isNaN(scale) || scale &lt; minScale || scale &gt; maxScale) {
+if (isNaN(scale) || scale < minScale || scale > maxScale) {
 alert(`Skaleringsfaktor må være et tall mellom ${minScale} og ${maxScale}. Bruker 1x.`);
 scaleInput.value = 1;
 }
@@ -510,9 +513,9 @@ function cropCanvas(source) {
 const ctx = source.getContext('2d'),
 data = ctx.getImageData(0, 0, source.width, source.height).data;
 let minX = source.width, minY = source.height, maxX = -1, maxY = -1;
-for (let y = 0; y &lt; source.height; y++)
-for (let x = 0; x &lt; source.width; x++) {
-if (data[(y * source.width + x) * 4 + 3] &gt; 0) { // Sjekker alpha-kanalen
+for (let y = 0; y < source.height; y++)
+for (let x = 0; x < source.width; x++) {
+if (data[(y * source.width + x) * 4 + 3] > 0) { // Sjekker alpha-kanalen
 minX = Math.min(x, minX);
 minY = Math.min(y, minY);
 maxX = Math.max(x, maxX);
@@ -529,32 +532,32 @@ croppedCanvas.getContext('2d').drawImage(source, minX, minY, width, height, 0, 0
 return croppedCanvas;
 }
 function addEventListeners() {
-gridCanvas.addEventListener('mousedown', (e) =&gt; {
+gridCanvas.addEventListener('mousedown', (e) => {
 isDrawing = true;
 handleDraw(e);
 });
 gridCanvas.addEventListener('mousemove', handleDraw);
-gridCanvas.addEventListener('mouseup', () =&gt; { isDrawing = false; });
-gridCanvas.addEventListener('mouseleave', () =&gt; { isDrawing = false; });
-pencilButton.addEventListener('click', () =&gt; setActiveTool('pencil'));
-eraserButton.addEventListener('click', () =&gt; setActiveTool('eraser'));
-pickerButton.addEventListener('click', () =&gt; setActiveTool('picker'));
+gridCanvas.addEventListener('mouseup', () => { isDrawing = false; });
+gridCanvas.addEventListener('mouseleave', () => { isDrawing = false; });
+pencilButton.addEventListener('click', () => setActiveTool('pencil'));
+eraserButton.addEventListener('click', () => setActiveTool('eraser'));
+pickerButton.addEventListener('click', () => setActiveTool('picker'));
 clearButton.addEventListener('click', clearCanvas);
 // FIKS: Kaller updateCanvasSize uten drawImage-parameter for å unngå å overskrive brukerens endringer.
-resizeButton.addEventListener('click', () =&gt; updateCanvasSize());
+resizeButton.addEventListener('click', () => updateCanvasSize());
 exportButton.addEventListener('click', exportImage);
-zoomSlider.addEventListener('input', () =&gt; {
+zoomSlider.addEventListener('input', () => {
 zoomLevelText.textContent = `${zoomSlider.value}x`;
 });
 zoomSlider.addEventListener('change', applyZoom);
-colorPaletteContainer.addEventListener('click', (e) =&gt; {
+colorPaletteContainer.addEventListener('click', (e) => {
 if (e.target.classList.contains('color-box')) selectColor(e.target);
 });
-loadImageButton.addEventListener('click', () =&gt; imageLoader.click());
-imageLoader.addEventListener('change', (e) =&gt; handleImageLoad(e.target.files[0]));
+loadImageButton.addEventListener('click', () => imageLoader.click());
+imageLoader.addEventListener('change', (e) => handleImageLoad(e.target.files[0]));
 fitImageButton.addEventListener('click', fitImageToCanvas);
 centerImageButton.addEventListener('click', centerImageOnCanvas);
-document.addEventListener('keydown', (e) =&gt; {
+document.addEventListener('keydown', (e) => {
 switch (e.key.toLowerCase()) {
 case 'p': setActiveTool('pencil'); break;
 case 'e': setActiveTool('eraser'); break;
@@ -564,7 +567,6 @@ case 'i': setActiveTool('picker'); break;
 }
 init();
 })();
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</title></head><body></body>
+</script>
+</body>
 </html>
